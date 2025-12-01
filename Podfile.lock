@@ -1,0 +1,54 @@
+PODS:
+  - AgoraRtcEngine_iOS (4.4.0):
+    - AgoraRtcEngine_iOS/AIAEC (= 4.4.0)
+    - AgoraRtcEngine_iOS/AIAECLL (= 4.4.0)
+    - AgoraRtcEngine_iOS/AINS (= 4.4.0)
+    - AgoraRtcEngine_iOS/AINSLL (= 4.4.0)
+    - AgoraRtcEngine_iOS/AudioBeauty (= 4.4.0)
+    - AgoraRtcEngine_iOS/ClearVision (= 4.4.0)
+    - AgoraRtcEngine_iOS/ContentInspect (= 4.4.0)
+    - AgoraRtcEngine_iOS/FaceCapture (= 4.4.0)
+    - AgoraRtcEngine_iOS/FaceDetection (= 4.4.0)
+    - AgoraRtcEngine_iOS/LipSync (= 4.4.0)
+    - AgoraRtcEngine_iOS/ReplayKit (= 4.4.0)
+    - AgoraRtcEngine_iOS/RtcBasic (= 4.4.0)
+    - AgoraRtcEngine_iOS/SpatialAudio (= 4.4.0)
+    - AgoraRtcEngine_iOS/VideoAv1CodecDec (= 4.4.0)
+    - AgoraRtcEngine_iOS/VideoAv1CodecEnc (= 4.4.0)
+    - AgoraRtcEngine_iOS/VideoCodecDec (= 4.4.0)
+    - AgoraRtcEngine_iOS/VideoCodecEnc (= 4.4.0)
+    - AgoraRtcEngine_iOS/VirtualBackground (= 4.4.0)
+    - AgoraRtcEngine_iOS/VQA (= 4.4.0)
+  - AgoraRtcEngine_iOS/AIAEC (4.4.0)
+  - AgoraRtcEngine_iOS/AIAECLL (4.4.0)
+  - AgoraRtcEngine_iOS/AINS (4.4.0)
+  - AgoraRtcEngine_iOS/AINSLL (4.4.0)
+  - AgoraRtcEngine_iOS/AudioBeauty (4.4.0)
+  - AgoraRtcEngine_iOS/ClearVision (4.4.0)
+  - AgoraRtcEngine_iOS/ContentInspect (4.4.0)
+  - AgoraRtcEngine_iOS/FaceCapture (4.4.0)
+  - AgoraRtcEngine_iOS/FaceDetection (4.4.0)
+  - AgoraRtcEngine_iOS/LipSync (4.4.0)
+  - AgoraRtcEngine_iOS/ReplayKit (4.4.0)
+  - AgoraRtcEngine_iOS/RtcBasic (4.4.0)
+  - AgoraRtcEngine_iOS/SpatialAudio (4.4.0)
+  - AgoraRtcEngine_iOS/VideoAv1CodecDec (4.4.0)
+  - AgoraRtcEngine_iOS/VideoAv1CodecEnc (4.4.0)
+  - AgoraRtcEngine_iOS/VideoCodecDec (4.4.0)
+  - AgoraRtcEngine_iOS/VideoCodecEnc (4.4.0)
+  - AgoraRtcEngine_iOS/VirtualBackground (4.4.0)
+  - AgoraRtcEngine_iOS/VQA (4.4.0)
+
+DEPENDENCIES:
+  - AgoraRtcEngine_iOS (~> 4.4.0)
+
+SPEC REPOS:
+  trunk:
+    - AgoraRtcEngine_iOS
+
+SPEC CHECKSUMS:
+  AgoraRtcEngine_iOS: 8f579495aafaf383346241a419718e9775723493
+
+PODFILE CHECKSUM: bc168929e740348626d40ebdbfe6cfbc41aaf662
+
+COCOAPODS: 1.16.2
