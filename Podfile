@@ -5,8 +5,8 @@ target 'AudioSafety' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Agora SDK
-  pod 'AgoraRtcEngine_iOS', '~> 4.4.0'
+  # Agora Audio-Only SDK (matching Android version 4.4.0)
+  pod 'AgoraAudio_iOS', '4.4.0'
 
 end
 

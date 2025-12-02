@@ -26,13 +26,16 @@ class AudioSafetyManager: NSObject {
         self.bufferDurationSeconds = bufferDurationSeconds
         super.init()
         
+        print("[AudioSafetyManager] Initializing with buffer duration: \(bufferDurationSeconds)s")
+        
+        // Set audio frame delegate
         agoraKit.setAudioFrameDelegate(self)
         
-        agoraKit.setPlaybackAudioFrameBeforeMixingParameters(48000, channel: 1)
+        // Configure audio frame parameters for v4.4.0
+        agoraKit.setPlaybackAudioFrameBeforeMixingParametersWithSampleRate(48000, channel: 1)
+        agoraKit.setRecordingAudioFrameParametersWithSampleRate(48000, channel: 1, mode: .readOnly, samplesPerCall: 1024)
         
-        agoraKit.setRecordingAudioFrameParameters(48000, channel: 1, mode: .readonly, samplesPerCall: 1024)
-        
-        print("[AudioSafetyManager] Initialized with buffer duration: \(bufferDurationSeconds)s")
+        print("[AudioSafetyManager] ✅ Audio frame delegate and parameters configured")
     }
     
     func recordBuffer(uid: UInt, completion: @escaping (URL?) -> Void) {
@@ -84,15 +87,15 @@ class AudioSafetyManager: NSObject {
     }
     
     /// Register a user ID to start monitoring their audio
-    func registerUser(uid: UInt) {
+    func registerUser(_ uid: UInt) {
         queue.async { [weak self] in
             self?.registeredUsers.insert(uid)
-            print("[AudioSafetyManager] Registered user \(uid) for audio monitoring")
+            print("[AudioSafetyManager] ✅ Registered user \(uid) for audio monitoring. Total registered: \(self?.registeredUsers.count ?? 0)")
         }
     }
     
     /// Unregister a user ID to stop monitoring their audio
-    func unregisterUser(uid: UInt) {
+    func unregisterUser(_ uid: UInt) {
         queue.async { [weak self] in
             guard let self = self else { return }
             self.registeredUsers.remove(uid)
@@ -105,7 +108,7 @@ class AudioSafetyManager: NSObject {
     func startRecording() {
         queue.async { [weak self] in
             self?.isRecording = true
-            print("[AudioSafetyManager] Recording started")
+            print("[AudioSafetyManager] ✅ Recording started - audio frames will now be captured")
         }
     }
     
@@ -161,27 +164,28 @@ extension AudioSafetyManager: AgoraAudioFrameDelegate {
     }
     
     func getObservedAudioFramePosition() -> AgoraAudioFramePosition {
-        // Observe both record and playback before mixing
-        return [.record, .playbackBeforeMixing]
+        // Request record and playback frames (v4.4.0)
+        return [.record, .playback]
     }
     
     // MARK: - Audio Frame Callbacks
     
+    // Per-user remote audio (before mixing with other streams) - v4.4.0 API
     func onPlaybackAudioFrame(beforeMixing frame: AgoraAudioFrame, channelId: String, uid: UInt) -> Bool {
         
         // Early return checks to avoid unnecessary operations
-        guard isRecording else { return forwardingDelegate?.onPlaybackAudioFrame?(beforeMixing: frame, channelId: channelId, uid: uid) ?? true }
-        guard registeredUsers.contains(uid) else { return forwardingDelegate?.onPlaybackAudioFrame?(beforeMixing: frame, channelId: channelId, uid: uid) ?? true }
-        guard let rawBuffer = frame.buffer else { return forwardingDelegate?.onPlaybackAudioFrame?(beforeMixing: frame, channelId: channelId, uid: uid) ?? true }
+        guard isRecording else { return true }
+        guard registeredUsers.contains(uid) else { return true }
+        guard let rawBuffer = frame.buffer else { return true }
         
         let samplesPerSec = Int(frame.samplesPerSec)
         let channels = Int(frame.channels)
         let bytesPerSample = Int(frame.bytesPerSample)
-        let samples = Int(frame.samples)
+        let samples = Int(frame.samplesPerChannel)
         
         // Validate audio format (48kHz, Mono, 16-bit)
         guard samplesPerSec == 48000, channels == 1, bytesPerSample == 2 else {
-            return forwardingDelegate?.onPlaybackAudioFrame?(beforeMixing: frame, channelId: channelId, uid: uid) ?? true
+            return true
         }
         
         let size = samples * channels * bytesPerSample
@@ -197,12 +201,13 @@ extension AudioSafetyManager: AgoraAudioFrameDelegate {
                     sampleRate: samplesPerSec,
                     channels: channels
                 )
+                print("[AudioSafetyManager] Created buffer for remote user \(uid)")
             }
             
             self.userBuffers[uid]?.push(data: dataCopy)
         }
         
-        return forwardingDelegate?.onPlaybackAudioFrame?(beforeMixing: frame, channelId: channelId, uid: uid) ?? true
+        return true
     }
     
     func onRecordAudioFrame(_ frame: AgoraAudioFrame, channelId: String) -> Bool {
@@ -216,7 +221,7 @@ extension AudioSafetyManager: AgoraAudioFrameDelegate {
         let samplesPerSec = Int(frame.samplesPerSec)
         let channels = Int(frame.channels)
         let bytesPerSample = Int(frame.bytesPerSample)
-        let samples = Int(frame.samples)
+        let samples = Int(frame.samplesPerChannel)
         
         // Validate audio format (48kHz, Mono, 16-bit)
         guard samplesPerSec == 48000, channels == 1, bytesPerSample == 2 else {
@@ -243,20 +248,13 @@ extension AudioSafetyManager: AgoraAudioFrameDelegate {
         return forwardingDelegate?.onRecordAudioFrame?(frame, channelId: channelId) ?? true
     }
     
-    func onPlaybackAudioFrame(_ frame: AgoraAudioFrame, channelId: String) -> Bool {
-        return forwardingDelegate?.onPlaybackAudioFrame?(frame, channelId: channelId) ?? true
-    }
-    
+    // Mixed audio (all remote users combined) - not used for per-user monitoring
     func onMixedAudioFrame(_ frame: AgoraAudioFrame, channelId: String) -> Bool {
-        return forwardingDelegate?.onMixedAudioFrame?(frame, channelId: channelId) ?? true
+        return true
     }
     
+    // Ear monitoring - not used
     func onEarMonitoringAudioFrame(_ frame: AgoraAudioFrame) -> Bool {
-        return forwardingDelegate?.onEarMonitoringAudioFrame?(frame) ?? true
-    }
-    
-    // Legacy callback - maintained for compatibility
-    func onRecord(_ frame: AgoraAudioFrame, channelId: String) -> Bool {
         return true
     }
 }
