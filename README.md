@@ -207,7 +207,7 @@ private func uploadToModerationService(fileUrl: URL, reportedUid: UInt) {
 
 ## Architecture
 
-This implementation follows the Android reference architecture:
+This implementation follows the Android reference to AudioSafety: https://github.com/AgoraIO/API-Examples/tree/dev/CSD-75694/Android/APIExample-Audio/app/src/main/java/io/agora/api/example/examples/advanced/audiosafety
 
 - **User Registration**: Only monitored users consume memory
 - **Recording State**: Explicit start/stop control
