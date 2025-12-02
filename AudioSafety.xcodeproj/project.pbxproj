@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02 /* AppDelegate.swift */; };
-		03 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04 /* SceneDelegate.swift */; };
-		05 /* AudioSafety.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06 /* AudioSafety.swift */; };
-		07 /* AudioSafetyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08 /* AudioSafetyManager.swift */; };
 		09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10 /* Assets.xcassets */; };
+		0CD7BD07CAF6BEC373C0EAC3 /* AudioSafety.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441C4C08043977DF5D149664 /* AudioSafety.swift */; };
 		2E935BD7C80E19F6B3B3D4AC /* Pods_AudioSafety.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B0D8F9E5A6F8E3C4D2A1F0B /* Pods_AudioSafety.framework */; };
-		5BD026F54332F1E66088DCC8 /* KeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D230B6468DCE0A3A37C1D2 /* KeyStore.swift */; };
+		601D8C5508D9F6BD533FF929 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C03BA2227C9D56010FB287 /* AppDelegate.swift */; };
+		697D40BB5538F341816C55AD /* AudioSafetyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476EB7B536D0E6218E64D8E /* AudioSafetyManager.swift */; };
+		7EB2C11B8F4C6966FDCE7916 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC94936BEA6D2C690598160E /* SceneDelegate.swift */; };
+		C039D677DC13AF4E22CAD0DA /* KeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1773E9A89FDD601CD1794007 /* KeyStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,12 +22,17 @@
 		06 /* AudioSafety.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSafety.swift; sourceTree = "<group>"; };
 		08 /* AudioSafetyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSafetyManager.swift; sourceTree = "<group>"; };
 		10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13 /* AudioSafety.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioSafety.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1773E9A89FDD601CD1794007 /* KeyStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KeyStore.swift; sourceTree = "<group>"; };
+		441C4C08043977DF5D149664 /* AudioSafety.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AudioSafety.swift; sourceTree = "<group>"; };
 		7B0D8F9E5A6F8E3C4D2A1F0B /* Pods_AudioSafety.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudioSafety.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A04E43BB076F1452DAF36427 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1B2C3D4E5F67890ABCD1234 /* Pods-AudioSafety.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioSafety.debug.xcconfig"; path = "Target Support Files/Pods-AudioSafety/Pods-AudioSafety.debug.xcconfig"; sourceTree = "<group>"; };
 		B2C3D4E5F67890ABCD123456 /* Pods-AudioSafety.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioSafety.release.xcconfig"; path = "Target Support Files/Pods-AudioSafety/Pods-AudioSafety.release.xcconfig"; sourceTree = "<group>"; };
-		E6D230B6468DCE0A3A37C1D2 /* KeyStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KeyStore.swift; sourceTree = "<group>"; };
+		B476EB7B536D0E6218E64D8E /* AudioSafetyManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AudioSafetyManager.swift; sourceTree = "<group>"; };
+		BC94936BEA6D2C690598160E /* SceneDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C2C03BA2227C9D56010FB287 /* AppDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E2845CA2B3F023D63EF919AD /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,50 +50,14 @@
 		15 = {
 			isa = PBXGroup;
 			children = (
-				16 /* AudioSafety */,
-				17 /* Products */,
-				C1D2E3F4A5B67890CDEF1234 /* Pods */,
-				D2E3F4A5B67890CDEF123456 /* Frameworks */,
-				E6D230B6468DCE0A3A37C1D2 /* KeyStore.swift */,
+				C2C03BA2227C9D56010FB287 /* AppDelegate.swift */,
+				BC94936BEA6D2C690598160E /* SceneDelegate.swift */,
+				441C4C08043977DF5D149664 /* AudioSafety.swift */,
+				B476EB7B536D0E6218E64D8E /* AudioSafetyManager.swift */,
+				1773E9A89FDD601CD1794007 /* KeyStore.swift */,
+				A04E43BB076F1452DAF36427 /* Info.plist */,
+				E2845CA2B3F023D63EF919AD /* Assets.xcassets */,
 			);
-			sourceTree = "<group>";
-		};
-		16 /* AudioSafety */ = {
-			isa = PBXGroup;
-			children = (
-				02 /* AppDelegate.swift */,
-				04 /* SceneDelegate.swift */,
-				06 /* AudioSafety.swift */,
-				08 /* AudioSafetyManager.swift */,
-				10 /* Assets.xcassets */,
-				12 /* Info.plist */,
-			);
-			path = AudioSafety;
-			sourceTree = "<group>";
-		};
-		17 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				13 /* AudioSafety.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		C1D2E3F4A5B67890CDEF1234 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A1B2C3D4E5F67890ABCD1234 /* Pods-AudioSafety.debug.xcconfig */,
-				B2C3D4E5F67890ABCD123456 /* Pods-AudioSafety.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		D2E3F4A5B67890CDEF123456 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7B0D8F9E5A6F8E3C4D2A1F0B /* Pods_AudioSafety.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +106,6 @@
 				Base,
 			);
 			mainGroup = 15;
-			productRefGroup = 17 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -204,11 +172,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01 /* AppDelegate.swift in Sources */,
-				03 /* SceneDelegate.swift in Sources */,
-				05 /* AudioSafety.swift in Sources */,
-				07 /* AudioSafetyManager.swift in Sources */,
-				5BD026F54332F1E66088DCC8 /* KeyStore.swift in Sources */,
+				601D8C5508D9F6BD533FF929 /* AppDelegate.swift in Sources */,
+				7EB2C11B8F4C6966FDCE7916 /* SceneDelegate.swift in Sources */,
+				0CD7BD07CAF6BEC373C0EAC3 /* AudioSafety.swift in Sources */,
+				697D40BB5538F341816C55AD /* AudioSafetyManager.swift in Sources */,
+				C039D677DC13AF4E22CAD0DA /* KeyStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
